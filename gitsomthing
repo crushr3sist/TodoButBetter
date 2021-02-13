@@ -1,0 +1,4 @@
+git add -A
+git commit -m "last commit"
+git push heroku master
+heroku logs --tail
