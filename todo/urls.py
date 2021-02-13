@@ -9,7 +9,8 @@ urlpatterns = [
     path("List/", view_lists),
     path("", home_app),
     path("deletion/", deleteall, name="deletion"),
-    path(r"deleteTask/<int:todo_id>/", deleteTask)
+    path(r"deleteTask/<int:todo_id>/", deleteTask),
+    path("improvlog/",improvementpage),
 
 
 ]

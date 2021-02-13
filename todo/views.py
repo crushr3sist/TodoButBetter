@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 from .form import *
 from .models import *
 from django.core import serializers
@@ -17,7 +17,10 @@ def create_list(request):
             return redirect('/List')
     else:
         list_forms = ListCreation()        
-    return render(request,'todo/createList.html',{"form":list_forms})
+    return render(request,'todo/base/createList.html',{"form":list_forms})
+
+def improvementpage(response):
+    return render(response, 'todo/base/improvements.html',{})
 
 def view_lists(request):
     if request.method == "POST":
@@ -27,7 +30,7 @@ def view_lists(request):
     else:
         todoList =  TodoApp_Fields.objects.all()
 
-    return render(request,'todo/lists.html',{"todolist":todoList})
+    return render(request,'todo/base/lists.html',{"todolist":todoList})
 
 def deleteTask(request, todo_id):
 

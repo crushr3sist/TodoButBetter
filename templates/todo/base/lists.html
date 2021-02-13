@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="description" content="Todo List App but better...not really">
+        <meta name="keywords" content="HTML, CSS, JavaScript">
+        <meta name="author" content="Rohaan">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
+
+        <!-- Latest compiled and minified CSS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
+		<!-- CSS only -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+        
+        <title>TodoButBetter</title>
+        <nav class="navbar navbar-light" style="background-color: #00D1B2;">
+            <a class="navbar-brand" href="/List">TodoButBetter</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/List">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/createList">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/List">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/improvlog">Improvements Log</a>
+                    </li>
+                    
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        {% comment %} <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/List">
+                <img src="\media\img\snippits\Logo.PNG" width="100px;" height="100px;">
+            </a>
+        </nav> {% endcomment %}
+
+
+
+    </head>
+
+    {% if todolist is not None %}
+
+        <body style="margin-left: auto;margin-right: auto;">
+            <div>
+                <table class="table">
+                    <th>Activity</th>
+                    <th>Time Created</th>
+                    <th>Urgency Level</th>
+                    <th>Date Due</th>
+                    <th>Edit</th>                        
+                        {% for Data in todolist %}
+                            <tr>
+                                <td>{{ Data.activity }}</td>
+                                <td>{{ Data.createTime }}</td>
+                                <td>{{ Data.urgency }}</td>
+                                <td>{{ Data.DueDate }}</td>                                
+                                <td>
+                                    <form class="form-check"  action="/deleteTask/{{Data.id}}">         
+                                        <button type='submit' class="btn glyphicon glyphicon-trash" >
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+
+                </table>
+                    <a class="delall" href="{% url 'deletion' %}"><button type="submit" class="btn btn-danger mx-auto d-flex text-center" style=" text-align:center; margin:auto; display:flex; display:grid; width: 200px;" >Delete All</button></a>
+                
+
+            </div>
+            <div class="container-fluid mt-5">
+                <h2 class="ml-2 ">Improvments to come</h2>
+
+                <table class="table">
+                        <th>Title</th>
+                        <th>descirption</th>
+                        <th>Update release date</th>
+                        
+                        <tr style="text-decoration: line-through;">
+                            <td>due dates</td>
+                            <td>Add a due dates to tasks that need to be compete, urgency levels arent enough, you should have a reminder</td>
+                            <td>06/02/2021</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>Login and Register</td>
+                            <td>This feature is extrememly nessasry because people cant keep thier lists, therefore there is nothing to this is app is there, its just there for show</td>
+                            <td>13/02/2021</td>
+                        
+                        </tr>
+
+                        <tr>
+
+                            <td>Shareable Lists</td>
+                            <td>Did you ever want to show a wasteman how much you have on your plate, well in 2 weeks time you can do exactly that</td>
+                            <td>13/02/2021</td>
+                        
+                        </tr>
+
+                        <tr>
+
+                            <td>Translate into a Mobile App</td>
+                            <td>I want this to be modelled after this app however, you should be able to download lists and send them to your account but the main point of this app is for you to be able to see your todo list at all day all time</td>
+                            <td>20/02/2021</td>
+                        
+                        </tr>
+
+                        <tr>
+
+                            <td>Suggestions app</td>
+                            <td>Another form to tell me what you hate about this app and why it will never reach anyones phones and i will try my hardest to do somthing about your narscisitic rants. just like how i mispelled narscisitic and probs again.</td>
+                            <td>30/02/2021</td>
+                        
+                        </tr>
+
+                </table>
+            </div>
+        </body>
+    {% endif %}
+</html>

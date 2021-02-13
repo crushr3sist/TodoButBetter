@@ -1,72 +1,80 @@
 <!DOCTYPE html>
-<html ">
+<html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
 		<!-- CSS only -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
 
 	   	<style type="text/css">
-	   		body{
-	   			background-image: url("media/img/snippits/background.jpg");
-				  /* Full height */
-				height: 100%;
+	   		body {
+					background-image: url("media/img/snippits/background.jpg");
+					height: 100vh;
+					width: 100vw;
 
-				/* Center and scale the image nicely */
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-	   		}
+					/* Center and scale the image nicely */
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					
+
+	   			}
+			
 	   	</style>
 	</head>
 	<body>
 		<div class="container-fluid">
-			<a href="/List" ><p class="h1 text-center" style="color:#00D1B1;">Todo But Better</p></a>
-			
-			<br>
-			<div class="row">
-				<div class="col-sm">
-					<p>
-						<h3 style="color:#00D1B2;" class="float-right">This is a Todo list app but better. Easy to understand UI and fun UX </h3>
-					</p>
+			<div style="mt-10;">
+				<a href="/List" ><p class="h1 text-center" style="color:#00D1B1;">Todo But Better</p></a>
+				
+				<br>
+				<div class="row">
+					<div class="col-sm">
+						<p>
+							<h3 style="color:#00D1B2;" class="text-center">This is a Todo list app but better. Easy to understand UI and fun UX </h3>
+						</p>
+					</div>
+					<div class="col-sm">
+						<img src="media\img\snippits\create_list_ver1.PNG" class="img-fluid float-center rounded mx-auto d-block" alt="Responsive image">
+						
+					</div>
+
 				</div>
-				<div class="col-sm">
-					<img src="media\img\snippits\create_list_ver1.PNG" class="float-right" alt="Responsive image">
-					
+
+
+				<br>
+				<div class="row">
+					<div class="col-sm">
+						<img src="media\img\snippits\list_ver1.PNG" style='width:100%; height:auto;' class="img-fluid rounded mx-auto d-block" alt="Responsive image">
+						
+					</div>
+					<div class="col-sm">
+						<p><h3 style="color:#00D1B2;" class="text-center">Create a simple reminder for things that matter the most</h3></p>
+						
+					</div>
 				</div>
 
-			</div>
-
-
-			<br>
-			<div class="row">
-				<div class="col-sm">
-					<img src="media\img\snippits\list_ver1.PNG" class="rounded float-left" alt="Responsive image">
-					
-				</div>
-				<div class="col-sm">
-					<p><h4 style="color:#00D1B2;">Create a simple reminder for things that matter the most</h4></p>
-					
-				</div>
-			</div>
 
 
 
-
-			<br>
-			<div class="row">
-				<div class="col-sm">
-					<div class="text-center">
-						<p><h4 style="color: #ffff"> Want to get started? Go ahead and register</h4></p>
-						<a><button type="button" class="btn btn-outline-secondary">Sign Up</button></a>
+				<br>
+				<div class="row">
+					<div class="col-sm">
 						<div class="text-center">
-						<p><h4 style="color: #ffff"> If you have a account please login</h4></p>
-						<a><button type="button" class="btn btn-outline-success">Login</button></a>
-						<br><br>	
+							<p><h4 style="color: #ffff"> Want to get started? Go ahead and register</h4></p>
+							<a><button type="button" class="btn btn-outline-secondary" style='color:white;'>Sign Up</button></a>
+							<div class="text-center">
+							<p><h4 style="color: #ffff"> If you have a account please login</h4></p>
+							<a><button type="button" class="btn btn-outline-success" style='color:white;'>Login</button></a>
+							<br><br>	
 
-					</div>		
+						</div>		
 
-					</div>				
+						</div>				
+					</div>
 				</div>
 			</div>		
 		</div>
