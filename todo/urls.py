@@ -11,6 +11,7 @@ urlpatterns = [
     path("deletion/", deleteall, name="deletion"),
     path(r"deleteTask/<int:todo_id>/", deleteTask),
     path("improvlog/",improvementpage),
+    path('about_page/', aboutpage)
 
 
 ]

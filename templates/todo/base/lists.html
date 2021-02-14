@@ -8,6 +8,7 @@
         <meta name="author" content="Rohaan">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
+    
 
         <!-- Latest compiled and minified CSS -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
@@ -39,101 +40,65 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/improvlog">Improvements Log</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_page">About</a>
+                    </li>
                     
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
         </nav>
-        {% comment %} <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="/List">
-                <img src="\media\img\snippits\Logo.PNG" width="100px;" height="100px;">
-            </a>
-        </nav> {% endcomment %}
-
-
 
     </head>
 
     {% if todolist is not None %}
 
-        <body style="margin-left: auto;margin-right: auto;">
+        <body  style="margin-left: auto;margin-right: auto;">
             <div>
-                <table class="table">
+                <table class="table mt-4">
                     <th>Activity</th>
                     <th>Time Created</th>
                     <th>Urgency Level</th>
                     <th>Date Due</th>
-                    <th>Edit</th>                        
+                    <th></th>                        
                         {% for Data in todolist %}
-                            <tr>
+                            <tr class="mt-2">
                                 <td>{{ Data.activity }}</td>
                                 <td>{{ Data.createTime }}</td>
                                 <td>{{ Data.urgency }}</td>
                                 <td>{{ Data.DueDate }}</td>                                
                                 <td>
                                     <form class="form-check"  action="/deleteTask/{{Data.id}}">         
-                                        <button type='submit' class="btn glyphicon glyphicon-trash" >
+                                        <button type='submit' class="btn btn-warning" >Delete</button>
                                     </form>
                                 </td>
                             </tr>
                         {% endfor %}
 
                 </table>
-                    <a class="delall" href="{% url 'deletion' %}"><button type="submit" class="btn btn-danger mx-auto d-flex text-center" style=" text-align:center; margin:auto; display:flex; display:grid; width: 200px;" >Delete All</button></a>
-                
 
             </div>
-            <div class="container-fluid mt-5">
-                <h2 class="ml-2 ">Improvments to come</h2>
 
-                <table class="table">
-                        <th>Title</th>
-                        <th>descirption</th>
-                        <th>Update release date</th>
-                        
-                        <tr style="text-decoration: line-through;">
-                            <td>due dates</td>
-                            <td>Add a due dates to tasks that need to be compete, urgency levels arent enough, you should have a reminder</td>
-                            <td>06/02/2021</td>
-                        </tr>
-
+            <table style="height: 100vh; margin: auto;">
+                    <tbody>
                         <tr>
+                            <td>
+                                <button href="{% url 'deletion' %}" type="submit" class="
+                    btn 
+                    btn-danger 
+                    d-flex align-items-end
+                    " 
+                    style=" 
+                    align-items: flex-end;
+                    justify-content: center;
+                    
+                    position:relative;
 
-                            <td>Login and Register</td>
-                            <td>This feature is extrememly nessasry because people cant keep thier lists, therefore there is nothing to this is app is there, its just there for show</td>
-                            <td>13/02/2021</td>
-                        
+                    width: 200px;">Delete All</button>
+                                </td>
                         </tr>
-
-                        <tr>
-
-                            <td>Shareable Lists</td>
-                            <td>Did you ever want to show a wasteman how much you have on your plate, well in 2 weeks time you can do exactly that</td>
-                            <td>13/02/2021</td>
-                        
-                        </tr>
-
-                        <tr>
-
-                            <td>Translate into a Mobile App</td>
-                            <td>I want this to be modelled after this app however, you should be able to download lists and send them to your account but the main point of this app is for you to be able to see your todo list at all day all time</td>
-                            <td>20/02/2021</td>
-                        
-                        </tr>
-
-                        <tr>
-
-                            <td>Suggestions app</td>
-                            <td>Another form to tell me what you hate about this app and why it will never reach anyones phones and i will try my hardest to do somthing about your narscisitic rants. just like how i mispelled narscisitic and probs again.</td>
-                            <td>30/02/2021</td>
-                        
-                        </tr>
-
+                    </tbody>
                 </table>
-            </div>
+            
         </body>
     {% endif %}
 </html>

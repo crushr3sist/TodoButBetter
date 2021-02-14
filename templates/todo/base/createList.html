@@ -19,8 +19,8 @@
 		
         
         <title>TodoButBetter</title>
-                <nav class="navbar navbar-light" style="background-color: #00D1B2;">
-            <a class="navbar-brand" href="#">TodoButBetter</a>
+        <nav class="navbar navbar-light" style="background-color: #00D1B2;">
+            <a class="navbar-brand" href="/List">TodoButBetter</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,22 +39,27 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/improvlog">Improvements Log</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_page">About</a>
+                    </li>
                     
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                
             </div>
         </nav>
+        {% comment %} <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="/List">
+                <img src="\media\img\snippits\Logo.PNG" width="100px;" height="100px;">
+            </a>
+        </nav> {% endcomment %}
 
 
 
     </head>
 
-    <body style="padding:10px; items-align:center;">
+    <body   style=" items-align:center;">
         <div class="form-group">
-            <form method="POST">
+            <form method="POST" class='mt-4 ml-2 mr-2'>
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button  type="submit" class="btn btn-outline-success" style="items-align:center;">Create</button>

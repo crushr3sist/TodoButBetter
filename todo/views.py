@@ -36,6 +36,9 @@ def deleteTask(request, todo_id):
 
     TodoApp_Fields.objects.get(id=todo_id).delete()
     return redirect('/List')
+
+def aboutpage(request):
+    return render(request, 'todo/base/aboutme.html', {})
     
 
 def deleteall(request):
