@@ -1,13 +1,12 @@
 from account.models import AccountsDB
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth import authenticate, logout
 from .forms import *
 from django.contrib.auth.decorators import login_required
 
-
-
 # Create your views here.
+@login_required
 def accountView(request,usr=AccountsDB.Username):
 
     if request.method == "GET":
@@ -31,17 +30,18 @@ def login_(request,usr=AccountsDB.Username):
     # clean the data from the form and use that as the usr
     if request.method == "POST":
         login = Login(request.POST or None)
-        if login.is_valid():
+        if login.is_valid(): 
             username = login.cleaned_data['Username']
             password = login.cleaned_data['Password']
+            
             print(username,password)
-            user = authenticate(username=username, password=password)
+            user = authenticate(request,username='username', password='password')
+            print(user)
             if user is not None:
                 login(request, user)
                 request.session.set_expiry(0)
                 request.session['loggedin'] = username
 
-                
             return redirect(f'/user/accounts/{username}/')
     else:
         login = Login()
@@ -50,5 +50,6 @@ def login_(request,usr=AccountsDB.Username):
 def logout_(request):
     # username = request.session.get(f'loggedin', '{username}')
     logout(request)
+    
     return redirect('/')
 
