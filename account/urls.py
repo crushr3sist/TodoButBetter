@@ -5,4 +5,5 @@ urlpatterns = [
     path(r'accounts/<str:usr>/', accountView),
     path('register_/', register_),
     path('login_/', login_),
+    path('logout_/', logout_)
 ]

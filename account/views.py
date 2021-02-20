@@ -1,14 +1,14 @@
 from account.models import AccountsDB
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout, login
 from .forms import *
 from django.contrib.auth.decorators import login_required
 
 
 
 # Create your views here.
-@login_required(login_url='/login_/')
+@login_required(login_url='/users/accounts/login_/')
 def accountView(request,usr=AccountsDB.Username):
 
     if request.method == "GET":
@@ -40,10 +40,16 @@ def login_(request,usr=AccountsDB.Username):
             if user is not None:
                 login(request, user)
                 request.session.set_expiry(0)
+                request.session['loggedin'] = username
+
                 
             return redirect(f'/user/accounts/{username}/')
     else:
         login = Login()
     return render(request, 'todo/UserCreation/login.html', {'login':login})
-    
+
+def logout_(request):
+    # username = request.session.get(f'loggedin', '{username}')
+    logout(request)
+    return redirect('/')
 
