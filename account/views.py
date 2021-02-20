@@ -5,8 +5,8 @@ from django.shortcuts import render
 # Create your views here.
 def accountView(request,usr=AccountsDB.Username):
 
-    if request.method == "POST":
-        accInfo = AccountsDB.objects.get(Username=usr)
+    if request.method == "GET":
+        accInfo = AccountsDB.objects.filter(Username=usr)
     else:
         accInfo = AccountsDB.objects.get(Username=usr)
 
