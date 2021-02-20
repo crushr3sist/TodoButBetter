@@ -7,7 +7,7 @@
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Rohaan">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
+        <link rel="shortcut icon" href="\media\img\snippits\Logo.PNG">
 
         <!-- Latest compiled and minified CSS -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
@@ -17,31 +17,12 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
+
     <body>
-    
-        <table class='table ml-2'>
-
-            <th>Username</th>
-            <th>Password</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Bio</th>
-            <th>Profile Picture</th>
-            <th>Gender</th>
-            
-            <tr>
-                {% for data in accinfo %}
-                    <td>{{ data.Username }}</td>
-                    <td>{{ data.Password }}</td>
-                    <td>{{ data.Firstname }}</td>
-                    <td>{{ data.Lastname }}</td>
-                    <td>{{ data.Bio }}</td>
-                    <td>{{ data.Gender }}</td>
-                    <td><img src={{ data.ProfilePicture }}></td>
-                {% endfor %}
-            </tr>
-
-        </table>
-
+        <form class="form-control" action='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <a><button method='POST' class='btn' type="submit">Login</button></a>
+        </form>
     </body>
-</html>
+</html> 
