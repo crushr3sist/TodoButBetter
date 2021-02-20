@@ -11,6 +11,7 @@ class AccountsDB(models.Model):
     Lastname       = models.TextField(null=False, editable=True, max_length=20)
     gender         = models.TextField()
     bio            = models.TextField(null=True, blank=True, editable=True, max_length=500)
+    remember_me    = models.BooleanField(null=True,blank=True, default=True)
     
     profilePicture = models.ImageField(default='img/profile_img/default.jpg',upload_to='',null=True, blank=True, height_field='heightfield' , width_field='widthfield')
     heightfield    = models.IntegerField(default = 0)

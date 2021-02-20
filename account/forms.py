@@ -10,11 +10,13 @@ class Login(forms.ModelForm):
     class Meta:
         model = AccountsDB
         fields = [
-            
+            "Username",
+            "Password",
         ]
 
         widgets = {
-            
+            'Username': forms.TextInput(attrs={'class': 'form-control'}),
+            'Password': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class Register(forms.ModelForm):

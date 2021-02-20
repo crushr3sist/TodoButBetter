@@ -19,10 +19,20 @@
     </head>
 
     <body>
-        <form class="form-control" action='POST'>
+        <form class="mt-5 ml-5 mr-5" >
             {% csrf_token %}
-            {{ form.as_p }}
-            <a><button method='POST' class='btn' type="submit">Login</button></a>
+            {{ login.as_p }}
+            
+            <div class='container'>
+                <div class='row '>
+                    <button method='POST' class='btn ml-5 mr-5 ' type="submit">Login</button>
+                    <div class="form-check"> 
+                        <input class="form-check-input mt-1" type="checkbox" value="" id="remember_me">
+                        <label class="form-check-label" for="flexCheckDefault">Remember Me</label>
+                    </div>
+                </div>
+            </div>
+            
         </form>
     </body>
 </html> 
