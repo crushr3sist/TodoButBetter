@@ -19,7 +19,7 @@
     </head>
 
     <body>
-        <form class="mt-5 ml-5 mr-5" >
+        <form method='POST' class="mt-5 ml-5 mr-5" >
             {% csrf_token %}
             {{ login.as_p }}
             
@@ -32,7 +32,6 @@
                     </div>
                 </div>
             </div>
-            
         </form>
     </body>
 </html> 

@@ -1,9 +1,14 @@
 from account.models import AccountsDB
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate
 from .forms import *
+from django.contrib.auth.decorators import login_required
+
+
 
 # Create your views here.
+@login_required(login_url='/login_/')
 def accountView(request,usr=AccountsDB.Username):
 
     if request.method == "GET":
@@ -30,8 +35,13 @@ def login_(request,usr=AccountsDB.Username):
         if login.is_valid():
             username = login.cleaned_data['Username']
             password = login.cleaned_data['Password']
-            remember_me = login.cleaned_data['remember_me']
-            user = authenticated(username=username, password=password)
+            print(username,password)
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                request.session.set_expiry(0)
+                
+            return redirect(f'/user/accounts/{username}/')
     else:
         login = Login()
     return render(request, 'todo/UserCreation/login.html', {'login':login})
