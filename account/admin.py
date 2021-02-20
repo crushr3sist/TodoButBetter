@@ -1,5 +1,5 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(TodoApp_Fields)
+admin.site.register(AccountsDB)
 # Register your models here.
