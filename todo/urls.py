@@ -1,3 +1,4 @@
+from django.conf.urls import include
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
@@ -11,7 +12,8 @@ urlpatterns = [
     path("deletion/", deleteall, name="deletion"),
     path(r"deleteTask/<int:todo_id>/", deleteTask),
     path("improvlog/",improvementpage),
-    path('about_page/', aboutpage)
+    path('about_page/', aboutpage),
+    path('user/',include('account.urls'))
 
 
 ]
