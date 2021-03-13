@@ -1,13 +1,14 @@
-from account.models import AccountsDB
-from django.http.response import HttpResponse
+from account.models import User
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate, logout, login
 from .forms import *
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-@login_required
-def accountView(request,usr=AccountsDB.Username):
+
+def accountView(request,usr=User.Username):
 
     if request.method == "GET":
         accInfo = AccountsDB.objects.filter(Username=usr)
@@ -18,34 +19,30 @@ def accountView(request,usr=AccountsDB.Username):
 
 def register_(request):
     if request.method == "POST":
-        reg_ = Register(request.POST or None)
-        if reg_.is_valid():
-            reg_.save()
-            return redirect('/user/login_/')
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account Created for {username}')
+            form.save()
     else:
-        reg_ = Register()
-    return render(request, 'todo/UserCreation/register.html', {'form':reg_})
-    
-def login_(request,usr=AccountsDB.Username):
-    # clean the data from the form and use that as the usr
-    if request.method == "POST":
-        login = Login(request.POST or None)
-        if login.is_valid(): 
-            username = login.cleaned_data['Username']
-            password = login.cleaned_data['Password']
-            
-            print(username,password)
-            user = authenticate(request,username='username', password='password')
-            print(user)
-            if user is not None:
-                login(request, user)
-                request.session.set_expiry(0)
-                request.session['loggedin'] = username
+        form = UserCreationForm()
+    return render(request, 'todo/UserCreation/register.html', {'form':form})
 
-            return redirect(f'/user/accounts/{username}/')
-    else:
-        login = Login()
-    return render(request, 'todo/UserCreation/login.html', {'login':login})
+
+# def register_(request):
+#     if request.method == "POST":
+#         reg_ = Register(request.POST or None)
+#         if reg_.is_valid():
+#             reg_.save()
+#             if reg_.save() == True or not None:
+#                 return redirect('/login')
+#     else:
+#         reg_ = Register()
+#     return render(request, 'todo/UserCreation/register.html', {'form':reg_})
+    
+def dashboard(request):
+    return render(request, "todo/tut_temps/dashboard.html")
+
 
 def logout_(request):
     # username = request.session.get(f'loggedin', '{username}')

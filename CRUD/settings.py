@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',
     'account',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,8 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 
 django_heroku.settings(locals())
+
+LOGIN_REDIRECT_URL = "/List"
+LOGOUT_REDIRECT_URL = "/login"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

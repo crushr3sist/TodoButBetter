@@ -2,26 +2,15 @@ from django.db import models
 from django.forms import ModelForm
 from django import forms
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
 
 class DateInput(forms.DateInput):
     input_type = 'date'
 
-class Login(forms.ModelForm):
-    class Meta:
-        model = AccountsDB
-        fields = [
-            "Username",
-            "Password",
-        ]
-
-        widgets = {
-            'Username': forms.TextInput(attrs={'class': 'form-control'}),
-            'Password': forms.TextInput(attrs={'class': 'form-control'}),
-        }
 
 class Register(forms.ModelForm):
     class Meta:
-        model = AccountsDB
+        model = User
         fields = [
             "Username",
             "Password",
@@ -38,7 +27,6 @@ class Register(forms.ModelForm):
             ('Other','Other')
         )
         
-       
 
         widgets = {
             'Username': forms.TextInput(attrs={'class': 'form-control'}),
@@ -51,4 +39,9 @@ class Register(forms.ModelForm):
             "profilePicture": forms.FileInput(attrs={'class': 'form-control'})
         } 
 
+class UserRegisterForm(UserCreationForm):
+    email= forms.EmailField()
 
+    class meta:
+        model = User
+        Fields = ['username', 'email', 'password','password2']

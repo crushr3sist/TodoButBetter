@@ -18,20 +18,26 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
 
-    <body>
-        <form method='POST' class="mt-5 ml-5 mr-5" >
+
+
+    {% load crispy_forms_tags %}
+
+    <div class="content-section">
+        <form method="POST" class='form-control'>
             {% csrf_token %}
-            {{ login.as_p }}
-            
-            <div class='container'>
-                <div class='row '>
-                    <button method='POST' class='btn ml-5 mr-5 ' type="submit">Login</button>
-                    <div class="form-check"> 
-                        <input class="form-check-input mt-1" type="checkbox" value="" id="remember_me">
-                        <label class="form-check-label" for="flexCheckDefault">Remember Me</label>
-                    </div>
-                </div>
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
             </div>
         </form>
-    </body>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Need An Account? <a class="ml-2" href="/register_">Sign Up Now</a>
+            </small>
+        </div>
+    </div>
+
 </html> 

@@ -1,9 +1,11 @@
+from django import urls
+from django.conf.urls import include, url
+from django.contrib.auth.forms import AdminPasswordChangeForm
 from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path(r'accounts/<str:usr>/', accountView),
-    path('register_/', register_),
-    path('login_/', login_),
-    path('logout_/', logout_)
+    path(r'user/<str:usr>/', accountView),
+    path('register_/', register_),    
+
 ]
