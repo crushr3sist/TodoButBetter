@@ -3,6 +3,12 @@ from django.db.models.base import Model
 from django.db.models.fields.files import ImageField
 from django.contrib.auth.models import User
 
+# from django.contrib.auth.models import AbstractUser
+
+# class CustomUser(AbstractUser):
+#   # username, password, name etc. are already existing fields
+#   # new fields here
+
 class User(models.Model):
     Username       = models.CharField(null=False, max_length=30 )
     Password       = models.CharField(null=False, editable=True, max_length=30)

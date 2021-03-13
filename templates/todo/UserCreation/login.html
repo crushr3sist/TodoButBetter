@@ -16,28 +16,69 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+       <nav class="navbar navbar-light" style="background-color: #379683;">
+            <a class="navbar-brand" href="/List">TodoButBetter</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/List">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/createList">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/List">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/improvlog">Improvements Log</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_page">About</a>
+                    </li>
+                    
+                </ul>
+                
+            </div>
+        </nav>
     </head>
 
 
+    <body style="background-color: #5CDB95; backface-visibility: 5px;">
+        {% load crispy_forms_tags %}
+        <h1 style="text-align: center; color:#EDF5E1">TodoButBetter</h1>
 
-    {% load crispy_forms_tags %}
+        <div class="content-section">
 
-    <div class="content-section">
-        <form method="POST" class='form-control'>
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Log In</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Login</button>
+            <form method="POST"  style=" color:#EDF5E1; font-size: 23px; background-color: #8EE4AF; " class='form-control'>
+
+                {% csrf_token %}
+
+                <fieldset class="form-group" style="">
+
+                    {{ form|crispy }}
+
+                </fieldset>
+
+                <div class="form-group">
+                    <button class="btn" style="background-color: #05386B; " type="submit"><a style="color: white;">Login</a></button>
+                </div>
+
+            </form>
+
+
+            <div class="border-top pt-3">
+
+                <h4 class="text-muted">
+                    Need An Account? <a class="ml-2" href="/register_">Sign Up Now</a>
+                </h4>
+
             </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                Need An Account? <a class="ml-2" href="/register_">Sign Up Now</a>
-            </small>
-        </div>
-    </div>
 
+        </div>
+    </body>
 </html> 

@@ -41,7 +41,17 @@ class Register(forms.ModelForm):
 
 class UserRegisterForm(UserCreationForm):
     email= forms.EmailField()
-
+    help_texts = {
+            'username': None,
+            'email': None,
+            'password': None,
+            'password2': None
+        }
     class meta:
         model = User
         Fields = ['username', 'email', 'password','password2']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.TextInput(attrs={'class': 'form-control'}),
+            'password2': forms.TextInput(attrs={'class': 'form-control'}),
+        }
