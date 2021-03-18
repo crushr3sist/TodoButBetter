@@ -22,10 +22,17 @@
         <title>TodoButBetter</title>
         <nav class="navbar navbar-light" style="background-color: #00D1B2;">
             <a class="navbar-brand" href="/List">TodoButBetter</a>
+            
+            <div class='navbar-nav ml-auto nav-item nav-link'>
+                <form class='form-inline my-2 my-lg-0 ' style='align:right;'>
+                    <a href='/logout'><button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button></a>
+                    <a href='profile/'><button class="btn btn-primary my-2 my-sm-0" style="margin-left:10px;" >Profile</button></a>
+                </form>
+            </div>
+            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -52,53 +59,89 @@
 
     {% if todolist is not None %}
 
-        <body  style="margin-left: auto;margin-right: auto;">
-            <div>
-                <table class="table mt-4">
-                    <th>Activity</th>
-                    <th>Time Created</th>
-                    <th>Urgency Level</th>
-                    <th>Date Due</th>
-                    <th></th>                        
-                        {% for Data in todolist %}
-                            <tr class="mt-2">
-                                <td>{{ Data.activity }}</td>
-                                <td>{{ Data.createTime }}</td>
-                                <td>{{ Data.urgency }}</td>
-                                <td>{{ Data.DueDate }}</td>                                
-                                <td>
-                                    <form class="form-check"  action="/deleteTask/{{Data.id}}">         
-                                        <button type='submit' class="btn btn-warning" >Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endfor %}
-
-                </table>
-
-            </div>
-
-            <table style="height: 100vh; margin: auto;">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <button href="{% url 'deletion' %}" type="submit" class="
-                    btn 
-                    btn-danger 
-                    d-flex align-items-end
-                    " 
-                    style=" 
-                    align-items: flex-end;
-                    justify-content: center;
-                    
-                    position:relative;
-
-                    width: 200px;">Delete All</button>
-                                </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <body>
             
+            {% for Data in todolist %}
+
+                
+                        <div class="col">
+                            <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px;">
+                                <div class='card-body'>
+                                    <h5 class="card-title">{{ Data.activity }}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Time Created {{ Data.createTime }}</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">Date Created {{ Data.DueDate }}</h6>
+                                    
+                                    {% if Data.urgency == 0 %}
+                                        {% with color='#0099ff' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+
+                                    {% elif Data.urgency == 1 %}
+                                        {% with color='#33cc33' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+
+
+                                    {% elif Data.urgency == 2 %}
+                                        {% with color='#99ff33' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 3 %}
+                                        {% with color='#ffff00' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 4 %}
+                                        {% with color='#ffcc00' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 5 %}
+                                        {% with color='#ff9900' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 6 %}
+                                        {% with color='#ff6600' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 7 %}
+                                        {% with color='#ff3300' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    
+
+                                    {% elif Data.urgency == 8 %}
+                                        {% with color='#ff0000' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+
+                                    {% elif Data.urgency == 9 %}
+                                        {% with color='#000000' %}
+                                            <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
+                                        {% endwith %}
+                                    {% endif %}
+                                
+                                    <div class="row">
+                                        <form class="form-check"  action="/deleteTask/{{Data.id}}">         
+                                            <button type='submit' class="btn btn-warning" >Delete</button>
+                                        </form>
+                                        <form class="form-check"  action="/deleteTask/{{Data.id}}">         
+                                            <button type='submit' class="btn btn-success" >Completed</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                {% endfor %}            
         </body>
     {% endif %}
 </html>

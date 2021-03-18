@@ -10,6 +10,10 @@ def home_app(request):
     return render(request, "todo/meta/home.html",{})
 
 @login_required(login_url='/login_/')
+def profile_page(request):
+    return render(request, 'todo/Profile/base.html')
+
+@login_required(login_url='/login_/')
 def create_list(request):
     if request.method == "POST":
         list_forms = ListCreation(request.POST or None)
@@ -27,11 +31,11 @@ def improvementpage(response):
 @login_required(login_url='/login_/')
 def view_lists(request):
     if request.method == "POST":
-        todoList =  TodoApp_Fields.objects.all()
+        todoList = TodoApp_Fields.objects.all()
         if request.POST.get(todoList.activity):
             TodoApp_Fields.objects.filter(todoList.activity).delete()
     else:
-        todoList =  TodoApp_Fields.objects.all()
+        todoList = TodoApp_Fields.objects.all()
 
     return render(request,'todo/base/lists.html',{"todolist":todoList})
 

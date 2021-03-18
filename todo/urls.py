@@ -13,8 +13,9 @@ urlpatterns = [
     path(r"deleteTask/<int:todo_id>/", deleteTask),
     path("improvlog/",improvementpage),
     path('about_page/', aboutpage),
-    path('user/',include('account.urls'))
+    path('user/',include('account.urls')),
 
+    path('profile/', profile_page)
 
 ]
 

@@ -19,29 +19,5 @@
     </head>
     <body>
     
-        <table class='table ml-2'>
-
-            <th>Username</th>
-            <th>Password</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Bio</th>
-            <th>Profile Picture</th>
-            <th>Gender</th>
-            
-            <tr>
-                {% for data in accinfo %}
-                    <td>{{ data.Username }}</td>
-                    <td>{{ data.Password }}</td>
-                    <td>{{ data.Firstname }}</td>
-                    <td>{{ data.Lastname }}</td>
-                    <td>{{ data.Bio }}</td>
-                    <td>{{ data.Gender }}</td>
-                    <td><img src={{ data.ProfilePicture }}></td>
-                {% endfor %}
-            </tr>
-
-        </table>
-
     </body>
 </html>

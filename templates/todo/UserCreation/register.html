@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-
 <html>
-    <head>
-        <meta charset="UTF-8">
+	<head>
+		<title>
+			Register
+		</title>
+		<meta charset="UTF-8">
         <meta name="description" content="Todo List App but better...not really">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Rohaan">
@@ -15,76 +16,32 @@
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-         <nav class="navbar navbar-light" style="background-color: #379683;">
-            <a class="navbar-brand" href="/List">TodoButBetter</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/List">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/createList">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/List">List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/improvlog">Improvements Log</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about_page">About</a>
-                    </li>
-                    
-                </ul>
-                
-            </div>
-        </nav>
 
-    </head>
-
-    <body style="background-color: #5CDB95; backface-visibility: 5px;">
-
-        <h1 class='h1' style="margin-left: 10px; color:#EDF5E1 ; text-align: center;">TodoButBetter</h1>
-
-        <div style="margin-right: 10px; margin-right: 20px; ">
-
-            <form class="form-control " style='text-align: center; background-color: #8EE4AF; ' method='POST'>
-                {% csrf_token %}
+	</head>
+	<body style="text-align: center; background: #DF2B4F">
+		
+		<div class='container' style="text-align:center;">
+			<div class='card' style='margin-top:30px;' width='20rem;'>
+				<div class='card-body'>
+				<a href="/"style=" float:left;"> <img src="\media\static\icons\back.svg"> </a>
+					<br><h2 class="card-title">Register</h2>
+					<form method="post" class='form-group'>
+					
+						{% csrf_token %}
     
-                    {% for field in form %}
-                            <div style=" color:#EDF5E1; "><h3> {{ field.label_tag }}</h3> </div>
-                            {{ field }}<br>
+                        {% for field in form %}
+                            {% comment %} <div><h4> {{ field.label_tag }}</h4></div><br> {% endcomment %}
+                            <div>{{ field }}</div><br>
 
                             <p style=" color: #FC4445;">{{ field.errors }}</p>
 
-                    {% endfor %}
- 
-                <button method='POST' class='btn ' style="background-color: #05386B; " type="submit"><a style="color: white;">Register</a></button>
-                <h5> if you already have a account then <a href="/login">login</a></h5>
-            </form>
-        </div>
-    </body>
+                        {% endfor %}				
+					
+						<a href="/reg"><button class='btn btn-success'>Register</button></a>
+					</form>
+					<p> if you have a account please <a href="/login">login</a></p><br>
+		</div>
+	</body>
 </html> 
-
-<!-- <h1 class='h1' style="margin-left: 10px; text-align: center;">Register</h1> 
-<div style="margin-right: 10px; margin-right: 20px; "> 
-    <form class="form-control form-control-lg ml-2" style="text-align: center;"  method='POST'>
-     {% csrf_token %} 
-     {% for field in form %} 
-         <br>{{ field.label_tag }}<br> 
-         {{ field }}<br> 
-     {% endfor %}
-      <a>
-        <br>
-        <button method='POST' class='btn' type="submit">Register</button>
-    </a> 
-</form> 
-</div> 
-</body> 
-</html>  --> 
