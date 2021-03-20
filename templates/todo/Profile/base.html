@@ -2,12 +2,14 @@
 
 <html>
     <head>
+
         <meta charset="UTF-8">
         <meta name="description" content="Todo List App but better...not really">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Rohaan">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
+    
 
         <!-- Latest compiled and minified CSS -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
@@ -16,42 +18,53 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+        <style>
+          	 @media  screen and (min-width: 321px) and (max-width:960px){
+                xxxx
 
+            }
+            @media screen and (min-width: 720px) and (max-width:1024px){
+                xxxxx
+            }
+        </style>
         <title>TodoButBetter</title>
-        <nav class="navbar navbar-light" style="background-color: #00D1B2;">
-            <a class="navbar-brand" href="/List">TodoButBetter</a>
-            
-            <div class='navbar-nav ml-auto nav-item nav-link'>
-                <form class='form-inline my-2 my-lg-0 ' style='align:right;'>
-                    <button class="btn btn-danger my-2 my-sm-0" type="submit">Logout</button>
-                    <button class="btn btn-primary my-2 my-sm-0" style="margin-left:10px;" type="submit">Profile</button>
-                </form>
-            </div>
-            
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">TodoButBetter</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/List">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/List"> Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/createList">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/List">List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/improvlog">Improvements Log</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about_page">About</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/createList"> Create ➕  <span class="sr-only">(current)</span></a>
                     </li>
                     
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about_page">About</a>
+                        
+                    </li>
+
+                    <div class='float-left'>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a><div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'profile' %}">{{ username }}</a>
+                            <a class="dropdown-item" href="/improvlog">Improvements</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </li>
+                    </div>
                 </ul>
+                
             </div>
         </nav>
+
     </head>
 
     <body>

@@ -44,12 +44,13 @@ def improvementpage(response):
 def view_lists(request):
     if request.method == "POST":
         todoList = TodoApp_Fields.objects.filter(author_id=request.user.id)
+        username = request.user.username
         if request.POST.get(todoList.activity):
             TodoApp_Fields.objects.filter(todoList.activity).delete()
     else:
         todoList = TodoApp_Fields.objects.filter(author_id=request.user.id)
-
-    return render(request,'todo/base/lists.html',{"todolist":todoList})
+        username = request.user.username
+    return render(request,'todo/base/lists.html',{"todolist":todoList,"username":username})
 
 @login_required(login_url='/login/')
 def deleteTask(request, todo_id):
