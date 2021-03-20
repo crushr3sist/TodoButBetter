@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'todo',
     'account',
     'crispy_forms',
+
 ]
 
 MIDDLEWARE = [
@@ -49,8 +50,6 @@ MIDDLEWARE = [
 
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-
-
 
 
 TEMPLATE_LOADERS = [

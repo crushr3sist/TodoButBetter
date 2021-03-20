@@ -7,39 +7,51 @@ from django.contrib.auth.decorators import login_required
 
 
 def home_app(request):
+    if request.user.is_authenticated:
+        return redirect('/List')
     return render(request, "todo/meta/home.html",{})
 
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
 def profile_page(request):
     return render(request, 'todo/Profile/base.html')
 
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
 def create_list(request):
     if request.method == "POST":
         list_forms = ListCreation(request.POST or None)
         if list_forms.is_valid():
-            list_forms.save()
-            return redirect('/List')
+            check_auth = request.user.is_authenticated
+            if check_auth is True:
+                post = list_forms.save(commit=False)
+                post.author_id = request.user.id
+                post.save()
+                return redirect('/List')
     else:
         list_forms = ListCreation()        
     return render(request,'todo/base/createList.html',{"form":list_forms})
 
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
+def debugger(request):
+    
+    return render(request, 'todo/base/checker.html',{'info':request.user.id})
+
+
+@login_required(login_url='/login/')
 def improvementpage(response):
     return render(response, 'todo/base/improvements.html',{})
 
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
 def view_lists(request):
     if request.method == "POST":
-        todoList = TodoApp_Fields.objects.all()
+        todoList = TodoApp_Fields.objects.filter(author_id=request.user.id)
         if request.POST.get(todoList.activity):
             TodoApp_Fields.objects.filter(todoList.activity).delete()
     else:
-        todoList = TodoApp_Fields.objects.all()
+        todoList = TodoApp_Fields.objects.filter(author_id=request.user.id)
 
     return render(request,'todo/base/lists.html',{"todolist":todoList})
 
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
 def deleteTask(request, todo_id):
 
     TodoApp_Fields.objects.get(id=todo_id).delete()
@@ -49,7 +61,7 @@ def deleteTask(request, todo_id):
 def aboutpage(request):
     return render(request, 'todo/base/aboutme.html', {})
     
-@login_required(login_url='/login_/')
+@login_required(login_url='/login/')
 def deleteall(request):
     TodoApp_Fields.objects.all().delete()
     return redirect('/List')

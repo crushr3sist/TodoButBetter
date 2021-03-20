@@ -8,6 +8,7 @@ urlpatterns = [
 
     path("createList/", create_list),
     path("List/", view_lists),
+    path('deb/',debugger),
     path("", home_app),
     path("deletion/", deleteall, name="deletion"),
     path(r"deleteTask/<int:todo_id>/", deleteTask),
