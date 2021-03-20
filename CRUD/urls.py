@@ -6,7 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('todo.urls')),
     path('',include('account.urls')),
-    path('login/', auth_views.LoginView.as_view(template_name='/templates/todo/userCreation/login.html'), name='login'),
+    path('login/', auth_views.LoginView.as_view(template_name='todo/userCreation/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout')
     
 ]
