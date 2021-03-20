@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '@cz7dqf=j&l(u5bllc8oj*o^dwv&^lj1#iv%p-$ig*nbsiif)q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://todobutbetter.herokuapp.com/']
 
