@@ -5,7 +5,6 @@ from .models import *
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 
-
 def home_app(request):
     if request.user.is_authenticated:
         return redirect('/List')

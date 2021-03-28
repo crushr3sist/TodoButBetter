@@ -15,7 +15,6 @@ urlpatterns = [
     path("improvlog/",improvementpage),
     path('about_page/', aboutpage),
     path('user/',include('account.urls')),
-
     path('profile/', profile_page, name='profile')
 
 ]
