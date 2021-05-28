@@ -23,7 +23,6 @@ class Migration(migrations.Migration):
                 ('gender', models.TextField()),
                 ('bio', models.TextField(blank=True, max_length=500, null=True)),
                 ('remember_me', models.BooleanField(blank=True, default=True, null=True)),
-                ('profilePicture', models.ImageField(blank=True, default='img/profile_img/default.jpg', height_field='heightfield', null=True, upload_to='', width_field='widthfield')),
                 ('heightfield', models.IntegerField(default=0)),
                 ('widthfield', models.IntegerField(default=0)),
             ],

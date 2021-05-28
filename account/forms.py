@@ -15,7 +15,6 @@ class reg_user_Ext(forms.ModelForm):
             "Lastname",
             "bio",
             "gender",
-            "profilePicture"
         ]
         OPTIONS = (
             ('Male','Male'),
@@ -32,7 +31,7 @@ class reg_user_Ext(forms.ModelForm):
             "Lastname" : forms.TextInput(attrs={'class': 'form-control', 'name':'lname'}),
             "bio" : forms.Textarea(attrs={'class': 'form-control', 'name':'bio'}),
             "gender" : forms.Select(attrs={'class': 'form-control', 'name':'gender'}, choices=OPTIONS),
-            "profilePicture": forms.FileInput(attrs={'class': 'form-control', 'name':'profile'})
+            
         } 
 
 class reg_user(UserCreationForm):

@@ -18,8 +18,6 @@ class User(models.Model):
     gender         = models.TextField()
     bio            = models.TextField(null=True, blank=True, editable=True, max_length=500)
     remember_me    = models.BooleanField(null=True,blank=True, default=True)
-    
-    profilePicture = models.ImageField(default='img/profile_img/default.jpg',upload_to='',null=True, blank=True, height_field='heightfield' , width_field='widthfield')
     heightfield    = models.IntegerField(default = 0)
     widthfield     = models.IntegerField(default = 0)
 
