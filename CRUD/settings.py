@@ -3,7 +3,7 @@ import subprocess
 import django_heroku
 from pathlib import Path
 from django.utils import timezone
-import cx_Oracle
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
