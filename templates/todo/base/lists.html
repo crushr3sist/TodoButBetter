@@ -1,162 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8">
-        <meta name="description" content="Todo List App but better...not really">
-        <meta name="keywords" content="HTML, CSS, JavaScript">
-        <meta name="author" content="Rohaan">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
-    
-
-        <!-- Latest compiled and minified CSS -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" /> 
-		<!-- CSS only -->
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		
-        <style>
-          	 @media  screen and (min-width: 321px) and (max-width:960px){
-                resize: both;
-                overflow: auto;
-
-            }
-            @media screen and (min-width: 720px) and (max-width:1024px){
-                resize: both;
-                overflow: auto;
-            }
-        </style>
-        <title>TodoButBetter</title>
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">TodoButBetter</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/List"> Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/createList"> Create ➕  <span class="sr-only">(current)</span></a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about_page">About</a>
-                        
-                    </li>
-
-                    <div class='float-left'>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a><div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'profile' %}">{{ username }}</a>
-                            <a class="dropdown-item" href="/improvlog">Improvements</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                            </div>
-                        </li>
-                    </div>
-                </ul>
-                
-            </div>
-        </nav>
-
-    </head>
-
+<head> {% load static %}
+	<meta charset="UTF-8">
+	<meta name="description" content="Todo List App but better...not really">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="Rohaan">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="media\img\snippits\Logo.PNG">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="{% static 'js/draganddrop.js' %}" type="text/javascript"></script>
+	<link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+	
+	</style>
+	<title>TodoButBetter</title>
+	<nav class="inview navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="/">TodoButBetter</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"> <a class="nav-link" href="/List"> Home <span class="sr-only">(current)</span></a> </li>
+				<li class="nav-item active"> <a class="nav-link" href="/createList"> Create ➕  <span class="sr-only">(current)</span></a> </li>
+				<li class="nav-item"> <a class="nav-link" href="/about_page">About</a> </li>
+				<div class='float-left'>
+					<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="{% url 'profile' %}">{{ username }}</a> <a class="dropdown-item" href="/improvlog">Improvements</a>
+							<div class="dropdown-divider"></div> <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> </div>
+					</li>
+				</div>
+			</ul>
+		</div>
+	</nav>
+</head>
+<body class="body">
     {% if todolist is not None %}
-
-        <body>
-            
-            {% for Data in todolist %}
-
-                
-                <div class="col" style="">
-                    <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px; ">
-                        <div class='card-body'>
-                            <h5 class="card-title">{{ Data.activity }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Time Created {{ Data.createTime }}</h6>
-                            <h6 class="card-subtitle mb-2 text-muted">Date Created {{ Data.DueDate }}</h6>
-                            
-                            {% if Data.urgency == 0 %}
-                                {% with color='#0099ff' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-
-                            {% elif Data.urgency == 1 %}
-                                {% with color='#33cc33' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-
-
-                            {% elif Data.urgency == 2 %}
-                                {% with color='#99ff33' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 3 %}
-                                {% with color='#ffff00' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 4 %}
-                                {% with color='#ffcc00' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 5 %}
-                                {% with color='#ff9900' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 6 %}
-                                {% with color='#ff6600' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 7 %}
-                                {% with color='#ff3300' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            
-
-                            {% elif Data.urgency == 8 %}
-                                {% with color='#ff0000' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-
-                            {% elif Data.urgency == 9 %}
-                                {% with color='#000000' %}
-                                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center "><h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div>
-                                {% endwith %}
-                            {% endif %}
-                        
-                            <div class="row">
-                                <form class="form-check"  action="/deleteTask/{{Data.id}}">         
-                                    <button type='submit' class="btn btn-warning" >Delete</button>
-                                </form>
-                                <form class="form-check"  action="/deleteTask/{{Data.id}}">         
-                                    <button type='submit' class="btn btn-success" >Completed</button>
-                                </form>
-                            </div>
-                        </div>
+    <div class="base"> {% for Data in todolist %}
+        <div class="col" style="">
+            <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px; ">
+                <div class='card-body'>
+                    <h5 class="card-title">{{ Data.activity }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Time Created {{ Data.createTime }}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Date Created {{ Data.DueDate }}</h6> {% if Data.urgency == 0 %} {% with color='#0099ff' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 1 %} {% with color='#33cc33' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 2 %} {% with color='#99ff33' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 3 %} {% with color='#ffff00' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 4 %} {% with color='#ffcc00' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 5 %} {% with color='#ff9900' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 6 %} {% with color='#ff6600' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 7 %} {% with color='#ff3300' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 8 %} {% with color='#ff0000' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 9 %} {% with color='#000000' %}
+                    <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
+                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% endif %}
+                    <div class="row">
+                        <form class="form-check" action="/deleteTask/{{Data.id}}">
+                            <button type='submit' class="btn btn-warning">Delete</button>
+                        </form>
+                        <form class="form-check" action="/deleteTask/{{Data.id}}">
+                            <button type='submit' class="btn btn-success">Completed</button>
+                        </form>
                     </div>
                 </div>
-
-            {% endfor %}            
-        </body>
-    {% else %}
-        <div class="alert alert-success" role="alert">
-            You don't have any Todos, go ahead and click <a>Here</a> to create a new task when you need it. 
-        </div>
-    {% endif %}
+            </div>
+        </div> {% endfor %} </div>
+    <div> {% else %}
+        <div class="alert alert-success" role="alert"> You don't have any Todos, go ahead and click <a>Here</a> to create a new task when you need it. </div> {% endif %}
+<body>
 </html>
