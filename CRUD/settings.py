@@ -3,6 +3,7 @@ import subprocess
 import django_heroku
 from pathlib import Path
 from django.utils import timezone
+import cx_Oracle
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -95,8 +96,12 @@ WSGI_APPLICATION = 'CRUD.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'yqzrnnxvfxpbam',
+        'PASSWORD': 'c9a9b751eaf23eaeb00e2a80c4690d56d7869cf1e35b407a713eb6a0538260d1',
+        'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -147,5 +152,4 @@ django_heroku.settings(locals())
 
 LOGIN_REDIRECT_URL = "/List"
 LOGOUT_REDIRECT_URL = "/login"
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

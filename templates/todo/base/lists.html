@@ -20,11 +20,13 @@
 		
         <style>
           	 @media  screen and (min-width: 321px) and (max-width:960px){
-                xxxx
+                resize: both;
+                overflow: auto;
 
             }
             @media screen and (min-width: 720px) and (max-width:1024px){
-                xxxxx
+                resize: both;
+                overflow: auto;
             }
         </style>
         <title>TodoButBetter</title>
@@ -73,8 +75,8 @@
             {% for Data in todolist %}
 
                 
-                <div class="col">
-                    <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px;">
+                <div class="col" style="">
+                    <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px; ">
                         <div class='card-body'>
                             <h5 class="card-title">{{ Data.activity }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Time Created {{ Data.createTime }}</h6>
