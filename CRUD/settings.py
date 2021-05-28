@@ -3,8 +3,7 @@ import subprocess
 import django_heroku
 from pathlib import Path
 from django.utils import timezone
-
-
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -98,14 +97,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': 'yqzrnnxvfxpbam',
-        'PASSWORD': 'c9a9b751eaf23eaeb00e2a80c4690d56d7869cf1e35b407a713eb6a0538260d1',
-        'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+        'USER': 'postgres',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
-
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
