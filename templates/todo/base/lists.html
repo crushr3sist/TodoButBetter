@@ -42,9 +42,9 @@
 </head>
 <body class="body">
     {% if todolist is not None %}
-    <div class="base"> {% for Data in todolist %}
-        <div class="col" style="">
-            <div class='card' style="margin-top:10px;">
+    <div class=" base  "> {% for Data in todolist %}
+        <div class="col">
+            <div class='card ' style="margin-top:10px;">
                 <div class='card-body'>
 
                     <form class="form-check float-right">
@@ -86,25 +86,25 @@
                     {% if Data.urgency == 0 %} {% with color='#0099ff' %}
 
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 1 %} {% with color='#33cc33' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 1 %} {% with color='#33cc33' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 2 %} {% with color='#99ff33' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 2 %} {% with color='#99ff33' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 3 %} {% with color='#ffff00' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 3 %} {% with color='#ffff00' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 4 %} {% with color='#ffcc00' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 4 %} {% with color='#ffcc00' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 5 %} {% with color='#ff9900' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 5 %} {% with color='#ff9900' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 6 %} {% with color='#ff6600' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 6 %} {% with color='#ff6600' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 7 %} {% with color='#ff3300' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 7 %} {% with color='#ff3300' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 8 %} {% with color='#ff0000' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 8 %} {% with color='#ff0000' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 9 %} {% with color='#000000' %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 9 %} {% with color='#000000' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
-                        <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% endif %}
+                        <h6 style="background-color:{{color}}; color:white; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% endif %}
                     <div class="row">
                         
                     </div>
