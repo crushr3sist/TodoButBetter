@@ -1,16 +1,41 @@
 .body{
     color: black;
     overflow: auto;
-    background-color: black;
+    background-color: #3d3b35;
 
 }
 
-.inview{
-    background-color: black;
-}
+/* 4k pc */
+@media only screen and (min-width:1440px ) and (max-width: 2560px) {
 
-@media only screen and (max-width: 600px) {
-    .body {
-        background-color: lightblue;
+    .base{
+        width: 25%;
     }
+    .cross{
+        visibility: hidden;
+        display: none;
+    }
+    .options{
+        font-size: xx-large;
+    }
+}
+
+/* iPhone X ⋮ */
+@media only screen and (min-width:375px ) and (max-width: 376px) {
+
+    .base{
+        height: 105%;
+    }
+    .hider{
+        visibility: hidden;
+        display: none;
+    }
+    .cross{
+        visibility: hidden;
+        display: none;
+    }
+    .options{
+        font-size: xx-large;
+    }
+
 }

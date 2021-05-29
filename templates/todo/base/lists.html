@@ -19,32 +19,73 @@
 	
 	</style>
 	<title>TodoButBetter</title>
-	<nav class="inview navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="/">TodoButBetter</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"> <a class="nav-link" href="/List"> Home <span class="sr-only">(current)</span></a> </li>
-				<li class="nav-item active"> <a class="nav-link" href="/createList"> Create ➕  <span class="sr-only">(current)</span></a> </li>
-				<li class="nav-item"> <a class="nav-link" href="/about_page">About</a> </li>
-				<div class='float-left'>
-					<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="{% url 'profile' %}">{{ username }}</a> <a class="dropdown-item" href="/improvlog">Improvements</a>
-							<div class="dropdown-divider"></div> <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> </div>
-					</li>
-				</div>
-			</ul>
-		</div>
-	</nav>
+
+
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="/">TodoButBetter</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="/List"> Home <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item active"> <a class="nav-link" href="/createList"> Create ➕  <span class="sr-only">(current)</span></a> </li>
+                <li class="nav-item"> <a class="nav-link" href="/about_page">About</a> </li>
+                <div class='float-left'>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="{% url 'profile' %}">{{ username }}</a> <a class="dropdown-item" href="/improvlog">Improvements</a>
+                            <div class="dropdown-divider"></div> <a class="dropdown-item" href="{% url 'logout' %}">Logout</a> </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </nav>
+
+
 </head>
 <body class="body">
     {% if todolist is not None %}
     <div class="base"> {% for Data in todolist %}
         <div class="col" style="">
-            <div class='card' style="width: 25rem; margin-top:10px; margin-right:10px; ">
+            <div class='card' style="margin-top:10px;">
                 <div class='card-body'>
+
+                    <form class="form-check float-right">
+                        <div class="cross">
+                            <a type='submit' href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}" >❌</a>
+                        </div>
+                        <div class="options">
+                            <a type='submit' class="btn btn-primary" data-toggle="modal" data-target="#{{ Data.activity }}" href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}" >⋮</a>
+                        </div>
+                    </form>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="{{ Data.activity }}" tabindex="-1" role="dialog" >
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">{{ Data.activity }}</h5>
+                                    
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <a href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}"><h5 class="modal-title"  id="exampleModalLabel">Delete❌</h5></a> 
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <h5 class="card-title">{{ Data.activity }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Time Created {{ Data.createTime }}</h6>
-                    <h6 class="card-subtitle mb-2 text-muted">Date Created {{ Data.DueDate }}</h6> {% if Data.urgency == 0 %} {% with color='#0099ff' %}
+
+                    <div class="hider">
+                        <h6 class="hider ">Time Created {{ Data.createTime }}</h6>
+                        <h6 class="hider ">Date Created {{ Data.DueDate }}</h6> 
+                    </div>
+                    {% if Data.urgency == 0 %} {% with color='#0099ff' %}
+
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
                         <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% elif Data.urgency == 1 %} {% with color='#33cc33' %}
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
@@ -66,12 +107,7 @@
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
                         <h6 style="background-color:{{color}}; height:1.45rem; width:6rem; border-radius: 25px;" class="card-subtitle mb-2 text-muted">Urgency {{ Data.urgency }}</h6></div> {% endwith %} {% endif %}
                     <div class="row">
-                        <form class="form-check" action="/deleteTask/{{Data.id}}">
-                            <button type='submit' class="btn btn-warning">Delete</button>
-                        </form>
-                        <form class="form-check" action="/deleteTask/{{Data.id}}">
-                            <button type='submit' class="btn btn-success">Completed</button>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
