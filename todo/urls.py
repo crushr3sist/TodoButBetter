@@ -8,10 +8,10 @@ urlpatterns = [
 
     path("createList/", create_list),
     path("List/", view_lists),
-    path('deb/',debugger),
     path("", home_app),
     path("deletion/", deleteall, name="deletion"),
     path(r"deleteTask/<int:todo_id>/", deleteTask),
+    path(r"edit/<int:todo_id>/", edit_element),
     path("improvlog/",improvementpage),
     path('about_page/', aboutpage),
     path('user/',include('account.urls')),

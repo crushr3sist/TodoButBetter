@@ -31,12 +31,6 @@ def create_list(request):
     return render(request,'todo/base/createList.html',{"form":list_forms})
 
 @login_required(login_url='/login/')
-def debugger(request):
-    
-    return render(request, 'todo/base/checker.html',{'info':request.user.id})
-
-
-@login_required(login_url='/login/')
 def improvementpage(response):
     return render(response, 'todo/base/improvements.html',{})
 
@@ -58,6 +52,29 @@ def deleteTask(request, todo_id):
     TodoApp_Fields.objects.get(id=todo_id).delete()
     return redirect('/List')
 
+
+@login_required(login_url='/login/')
+def edit_element(request, todo_id):
+    if request.method == "POST":
+        list_forms = ListCreation(request.POST or None)
+        if list_forms.is_valid():
+            check_auth = request.user.is_authenticated
+            if check_auth is True:
+                post = list_forms.save(commit=False)
+                post.author_id = request.user.id
+                post.save()
+                return redirect(f'/deleteTask/{todo_id}')
+    else:
+        todoList = TodoApp_Fields.objects.filter(id=todo_id)
+        for k in todoList:
+
+            list_forms = ListCreation(initial={
+                'activity':k.activity,
+                'urgency':k.urgency,
+                'DueDate':k.DueDate,
+                })        
+    return render(request,'todo/base/edit.html',{"form":list_forms, })
+    
 @login_required(login_url='/login_/')
 def aboutpage(request):
     return render(request, 'todo/base/aboutme.html', {})
