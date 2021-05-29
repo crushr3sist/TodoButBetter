@@ -26,10 +26,7 @@
     .base{
         height: 105%;
     }
-    .hider{
-        visibility: hidden;
-        display: none;
-    }
+    
     .cross{
         visibility: hidden;
         display: none;
@@ -45,9 +42,7 @@
     .base{
         height: 105%;
     }
-    .hider{
-        visibility: visible;
-    }
+   
     .cross{
         visibility: hidden;
         display: none;
@@ -63,9 +58,7 @@
         height: 105%;
         width: 35%;
     }
-    .hider{
-        visibility: visible;
-    }
+    
     .cross{
         visibility: hidden;
         display: none;
