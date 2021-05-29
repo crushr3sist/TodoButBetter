@@ -48,9 +48,7 @@
                 <div class='card-body'>
 
                     <form class="form-check float-right">
-                        <div class="cross">
-                            <a type='submit' href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}" >❌</a>
-                        </div>
+                        
                         <div class="options">
                             <a type='submit' class="btn btn-primary" data-toggle="modal" data-target="#{{ Data.activity }}" href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}" >⋮</a>
                         </div>
@@ -68,22 +66,23 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <a href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}"><h5 class="modal-title"  id="exampleModalLabel">Delete❌</h5></a> 
-                                    <a href="/edit/{{Data.id}}" ><h5 class="modal-title" id="exampleModalLabel">Edit</h5></a>
+                                    <div class="hider">
+                                        <h6 class="hider ">Time Created {{ Data.createTime }}</h6>
+                                        <h6 class="hider ">Date Created {{ Data.DueDate }}</h6> 
+                                    </div>
+                                    
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><h5>Close<h5/></button>
+                                    <button class="btn btn-secondary"><a style="color: black;" href="/deleteTask/{{Data.id}}" action="/deleteTask/{{Data.id}}"><h5 class="modal-title"  id="exampleModalLabel">Delete❌</h5></a> </button>
+                                    <button class="btn btn-secondary"><a style="color: black;" href="/edit/{{Data.id}}" ><h5 class="modal-title" id="exampleModalLabel">Edit</h5></a></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <h5 class="card-title">{{ Data.activity }}</h5>
 
-                    <div class="hider">
-                        <h6 class="hider ">Time Created {{ Data.createTime }}</h6>
-                        <h6 class="hider ">Date Created {{ Data.DueDate }}</h6> 
-                    </div>
+                    
                     {% if Data.urgency == 0 %} {% with color='#0099ff' %}
 
                     <div style="width:5rem; height:2rem;  border-radius: 15px 50px 30px 5px; text-align:center ">
