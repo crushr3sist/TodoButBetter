@@ -43,9 +43,10 @@
 }
 
 @media only screen and (min-width:768px ) and (max-width: 770px) {
-
+    
     .base{
         height: 105%;
+        padding-bottom: 1000px;
     }
    
     .cross{
@@ -55,15 +56,20 @@
     .options{
         font-size: xx-large;
     }
+    .fixed-top {
+        position: static;
+       }
 
 }
 @media only screen and (min-width:1024px ) and (max-width: 1028px) {
 
     .base{
         height: 105%;
-        width: 35%;
+        display: flex;
+        width: 5000px;
+        flex: column-reverse;
+        
     }
-    
     .cross{
         visibility: hidden;
         display: none;
